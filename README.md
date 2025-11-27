@@ -344,17 +344,137 @@ This project demonstrates mastery of:
 
 ---
 
-## 📜 License
+## 👥 Team
 
-This project was developed as part of the Epitech curriculum and is intended for educational purposes.
+This project was crafted by a talented team of Epitech students, each bringing their unique expertise:
+
+<div align="center">
+
+| 👤 Developer | 🎯 Role | 📧 Contact |
+|--------------|---------|-----------|
+| **Kevin Nouhouayi** | 🎨 Graphics & Rendering Lead | [kevin.nouhouayi@epitech.eu](mailto:kevin.nouhouayi@epitech.eu) |
+| **Joseph Behanzin** | 🌐 Network Architecture Lead & Graphics (GUI) | [joseph.behanzin@epitech.eu](mailto:joseph.behanzin@epitech.eu) |
+| **Julcinia Oke** | 🤖 AI Development | [julcinia.oke@epitech.eu](mailto:julcinia.oke@epitech.eu) |
+| **Bill Adjagboni** | 🤖 AI Development | [bill.adjagboni@epitech.eu](mailto:bill.adjagboni@epitech.eu) |
+| **Ramdon Ogouyomi** | 🖥️ Server Development | [ramdon.ogouyomi@epitech.eu](mailto:ramdon.ogouyomi@epitech.eu) |
+| **Tobi Agongbonon** | 🖥️ Server Development | [tobi.agongbonon@epitech.eu](mailto:tobi.agongbonon@epitech.eu) |
+
+</div>
+
+### 🎯 Contributions Breakdown
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+#### 🎨 Graphics Team
+**Kevin Nouhouayi**
+- 3D Rendering Pipeline
+- Custom Shaders
+- Animation System
+- Visual Effects
+
+**Joseph Behanzin**
+- Network Protocol (GUI)
+- Client-Server Communication
+- Real-time Data Sync
+
+</td>
+<td width="33%" align="center">
+
+#### 🤖 AI Team
+**Julcinia Oke & Bill Adjagboni**
+- AI Logic & Behavior
+- State Machine Design
+- Team Coordination
+- Pathfinding Algorithms
+- Resource Management
+- Strategic Planning
+
+</td>
+<td width="33%" align="center">
+
+#### 🖥️ Server Team
+**Ramdon Ogouyomi & Tobi Agongbonon**
+- Core Game Engine
+- World Generation
+- Command Processing
+- Network Protocol
+- Player Management
+- Resource Distribution
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📜 License & Copyright
+
+<div align="center">
+
+### 🔒 Copyright Notice
+
+```
+Copyright © 2025 Zappy Development Team
+All Rights Reserved
+
+This project and its source code are protected under educational use.
+Unauthorized copying, distribution, or modification is prohibited
+without explicit permission from the development team.
+```
+
+### 📋 License Information
+
+This project was developed as part of the **Epitech curriculum** (B-YEP-400) and is intended for **educational purposes only**.
+
+**Permitted Use:**
+- ✅ Viewing and studying the code for educational purposes
+- ✅ Forking for personal learning and experimentation
+- ✅ Citing in academic work with proper attribution
+
+**Prohibited Use:**
+- ❌ Commercial use without permission
+- ❌ Plagiarism or claiming as original work
+- ❌ Redistribution without attribution
+
+**Attribution Required:**
+When referencing this project, please cite:
+```
+Zappy Simulator Engine (2025)
+Developed by: K. Nouhouayi, J. Behanzin, J. Oke, B. Adjagboni, R. Ogouyomi, T. Agongbonon
+Institution: Epitech
+Repository: https://github.com/Nouhouayikevin/Zappy
+```
+
+</div>
+
+---
+
+## 🌟 Acknowledgments
+
+Special thanks to:
+- **Epitech** for the project framework and educational support
+- **Raylib Community** for the excellent graphics library
+- **Open Source Contributors** whose tools made this project possible
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for the Epitech curriculum**
+### 🚀 Built with Passion and Code
 
-*Technologies: C • Python • C++ • Raylib • Network Programming • AI Development*
+![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)
+![Epitech](https://img.shields.io/badge/Epitech-2025-blue?style=for-the-badge)
+![Team](https://img.shields.io/badge/Team-6%20Developers-green?style=for-the-badge)
+
+**Technologies:** C • Python • C++ • Raylib • OpenGL • TCP/IP • Network Programming • AI Development
+
+---
+
+**© 2025 Zappy Development Team | Epitech Project**
+
+*Crafted with dedication, debugged with patience, deployed with pride* ✨
 
 [⬆ Back to Top](#-zappy---multi-platform-networked-game-engine)
 
