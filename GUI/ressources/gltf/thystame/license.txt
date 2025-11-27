@@ -1,0 +1,11 @@
+Model Information:
+* title:	Crystal Cluster 2 (Free)
+* source:	https://sketchfab.com/3d-models/crystal-cluster-2-free-b1bed3164820477894d4f76307a26a13
+* author:	chrismartin1337 (https://sketchfab.com/chrismartin1337)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Crystal Cluster 2 (Free)" (https://sketchfab.com/3d-models/crystal-cluster-2-free-b1bed3164820477894d4f76307a26a13) by chrismartin1337 (https://sketchfab.com/chrismartin1337) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

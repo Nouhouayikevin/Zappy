@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zappy - Multi-Platform Game Engine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6c757d;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 -2px 10px rgba(102,126,234,0.1);
+        }
+        
+        .nav-tab:hover {
+            background: rgba(102,126,234,0.05);
+            color: #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: #495057;
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .component-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .component-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .server-icon { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .ai-icon { background: linear-gradient(135deg, #4ecdc4, #44bd87); }
+        .gui-icon { background: linear-gradient(135deg, #a8e6cf, #7fcdcd); }
+        
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .command-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .command-title {
+            color: #495057;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .resource-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-item:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+        
+        .resource-name {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .resource-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .installation-steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .api-endpoint {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .api-method {
+            padding: 10px 15px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .api-get { background: #28a745; }
+        .api-post { background: #007bff; }
+        .api-put { background: #ffc107; color: #212529; }
+        .api-delete { background: #dc3545; }
+        
+        .api-path {
+            padding: 15px;
+            font-family: 'Fira Code', monospace;
+            background: #f8f9fa;
+        }
+        
+        .api-description {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .footer a:hover {
+            border-bottom-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-tabs { flex-direction: column; }
+            .tab-content { padding: 20px; }
+            .component-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Zappy</h1>
+            <p class="subtitle">Multi-Platform Networked Game Engine</p>
+            <div class="hero-badges">
+                <span class="badge">🖥️ C Server</span>
+                <span class="badge">🤖 Python AI</span>
+                <span class="badge">🎨 C++ GUI</span>
+                <span class="badge">🌐 Network Protocol</span>
+                <span class="badge">🎯 Real-time Strategy</span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
+                <button class="nav-tab" onclick="showTab('components')">Components</button>
+                <button class="nav-tab" onclick="showTab('installation')">Installation</button>
+                <button class="nav-tab" onclick="showTab('usage')">Usage</button>
+                <button class="nav-tab" onclick="showTab('api')">Game Mechanics</button>
+            </div>
+            
+            <div id="overview" class="tab-content active">
+                <h2>🎯 Project Overview</h2>
+                <p>Zappy is a sophisticated networked game engine built as part of the Epitech curriculum. It demonstrates advanced concepts in network programming, artificial intelligence, and real-time graphics rendering across multiple programming languages and platforms.</p>
+                
+                <h3>🎮 Game Concept</h3>
+                <p>Zappy simulates a competitive survival environment where AI-controlled players (Trantorians) compete for resources and advancement. Players must collect various resources, form teams, and perform incantations to level up while navigating a dynamic 2D world.</p>
+                
+                <h3>🌟 Key Features</h3>
+                <ul class="feature-list">
+                    <li><strong>Multi-language Architecture:</strong> C server, Python AI clients, C++ GUI</li>
+                    <li><strong>Real-time Networking:</strong> Custom protocol with efficient message handling</li>
+                    <li><strong>Advanced AI Behaviors:</strong> Team coordination, resource management, strategic planning</li>
+                    <li><strong>3D Visualization:</strong> Beautiful Raylib-powered graphics with animations</li>
+                    <li><strong>Resource Management:</strong> Complex economy with 7 different resource types</li>
+                    <li><strong>Team Dynamics:</strong> Collaborative elevation ceremonies and broadcasts</li>
+                    <li><strong>Scalable Design:</strong> Supports multiple teams and configurable world sizes</li>
+                </ul>
+                
+                <h3>🎯 Educational Value</h3>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <div class="resource-name">Network Programming</div>
+                        <div class="resource-description">Socket programming, protocol design, concurrent connections</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">AI Development</div>
+                        <div class="resource-description">Behavior trees, state machines, multi-agent coordination</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">Graphics Programming</div>
+                        <div class="resource-description">3D rendering, animation systems, real-time visualization</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">System Architecture</div>
+                        <div class="resource-description">Multi-component design, inter-process communication</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="components" class="tab-content">
+                <h2>🔧 System Components</h2>
+                
+                <div class="component-grid">
+                    <div class="component-card">
+                        <div class="component-icon server-icon">🖥️</div>
+                        <h3>Zappy Server</h3>
+                        <p><strong>Language:</strong> C</p>
+                        <p><strong>Purpose:</strong> Core game engine and world simulation</p>
+                        <ul class="feature-list">
+                            <li>World generation and resource distribution</li>
+                            <li>Player lifecycle management</li>
+                            <li>Command processing and validation</li>
+                            <li>Real-time game state synchronization</li>
+                            <li>Team management and slot allocation</li>
+                            <li>Physics simulation and collision detection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <div class="component-icon ai-icon">🤖</div>
+                        <h3>AI Client</h3>
+                        <p><strong>Language:</strong> Python 3</p>
+                        <p><strong>Purpose:</strong> Intelligent autonomous game agents</p>
+                        <ul class="feature-list">
+                            <li>Advanced pathfinding algorithms</li>
+                            <li>Resource collection strategies</li>
+                            <li>Team coordination protocols</li>
+                            <li>Elevation ceremony management</li>
+                            <li>Broadcast communication system</li>
+                            <li>Adaptive behavior patterns</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <div class="component-icon gui-icon">🎨</div>
+                        <h3>GUI Visualizer</h3>
+                        <p><strong>Language:</strong> C++ with Raylib</p>
+                        <p><strong>Purpose:</strong> Real-time 3D game visualization</p>
+                        <ul class="feature-list">
+                            <li>Dynamic 3D world rendering</li>
+                            <li>Player animation systems</li>
+                            <li>Resource visualization</li>
+                            <li>Real-time statistics dashboard</li>
+                            <li>Interactive camera controls</li>
+                            <li>Audio feedback system</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>🔄 Communication Flow</h3>
+                <div class="code-block">
+┌─────────────┐    TCP/UDP    ┌─────────────┐    TCP/UDP    ┌─────────────┐
+│             │◄──────────────►│             │◄──────────────►│             │
+│ AI Clients  │   Commands     │   Server    │   Game State  │  GUI Client │
+│  (Python)   │   Responses    │     (C)     │   Updates     │    (C++)    │
+│             │                │             │               │             │
+└─────────────┘                └─────────────┘               └─────────────┘
+                                       │
+                                       ▼
+                                ┌─────────────┐
+                                │ World State │
+                                │ Management  │
+                                └─────────────┘
+                </div>
+            </div>
+            
+            <div id="installation" class="tab-content">
+                <h2>⚙️ Installation Guide</h2>
+                
+                <h3>📋 Prerequisites</h3>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <div class="resource-name">System Requirements</div>
+                        <div class="resource-description">Linux (Ubuntu 18.04+, Mint, etc.)</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">Development Tools</div>
+                        <div class="resource-description">GCC/G++, Make, Python 3.8+</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">Graphics Library</div>
+                        <div class="resource-description">Raylib 4.0+ (for GUI component)</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">Network Libraries</div>
+                        <div class="resource-description">Standard POSIX sockets</div>
+                    </div>
+                </div>
+                
+                <h3>🚀 Quick Installation</h3>
+                <div class="installation-steps">
+                    <div class="step">
+                        <h4>Clone and Enter Directory</h4>
+                        <div class="code-block">
+git clone [repository-url] zappy
+cd zappy
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Install Raylib (Required for GUI)</h4>
+                        <div class="code-block">
+# Install Raylib dependencies
+sudo apt-get update
+sudo apt-get install build-essential git cmake
+
+# Clone and build Raylib
+git clone --depth 1 https://github.com/raysan5/raylib.git raylib
+cd raylib/src/
+make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED
+sudo make install RAYLIB_LIBTYPE=SHARED
+cd ../..
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Build All Components</h4>
+                        <div class="code-block">
+# Build everything with single command
+make all
+
+# Or build components individually:
+make SERVER    # Builds zappy_server
+make AI        # Builds zappy_ai
+make GUI       # Builds zappy_gui
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Verify Installation</h4>
+                        <div class="code-block">
+# Check if executables were created
+ls -la zappy_server zappy_ai zappy_gui
+
+# Test server help
+./zappy_server --help
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>🧹 Development Commands</h3>
+                <div class="command-section">
+                    <div class="command-title">Clean Build Files</div>
+                    <div class="code-block">make clean</div>
+                </div>
+                <div class="command-section">
+                    <div class="command-title">Full Clean (Remove Executables)</div>
+                    <div class="code-block">make fclean</div>
+                </div>
+                <div class="command-section">
+                    <div class="command-title">Rebuild Everything</div>
+                    <div class="code-block">make re</div>
+                </div>
+            </div>
+            
+            <div id="usage" class="tab-content">
+                <h2>🎮 Usage Instructions</h2>
+                
+                <h3>🖥️ Starting the Server</h3>
+                <div class="code-block">
+./zappy_server -p [port] -x [width] -y [height] -n [team1] [team2] ... -c [clients_per_team] -f [frequency]
+                </div>
+                
+                <div class="command-section">
+                    <div class="command-title">Server Parameters</div>
+                    <ul class="feature-list">
+                        <li><strong>-p port:</strong> Network port number (1024-65535)</li>
+                        <li><strong>-x width:</strong> World width in tiles (minimum 10)</li>
+                        <li><strong>-y height:</strong> World height in tiles (minimum 10)</li>
+                        <li><strong>-n teams:</strong> List of team names (space-separated)</li>
+                        <li><strong>-c clients:</strong> Maximum clients per team</li>
+                        <li><strong>-f frequency:</strong> Game frequency/speed (default: 100)</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+# Example: Start server with 2 teams on 20x20 world
+./zappy_server -p 4242 -x 20 -y 20 -n team1 team2 -c 5 -f 100
+                </div>
+                
+                <h3>🤖 Launching AI Clients</h3>
+                <div class="code-block">
+./zappy_ai -p [port] -n [team_name] -h [hostname]
+                </div>
+                
+                <div class="command-section">
+                    <div class="command-title">AI Client Parameters</div>
+                    <ul class="feature-list">
+                        <li><strong>-p port:</strong> Server port number</li>
+                        <li><strong>-n name:</strong> Team name (must match server configuration)</li>
+                        <li><strong>-h machine:</strong> Server hostname (default: localhost)</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+# Example: Connect AI to team1
+./zappy_ai -p 4242 -n team1 -h localhost
+
+# Connect multiple AIs
+./zappy_ai -p 4242 -n team1 &
+./zappy_ai -p 4242 -n team2 &
+./zappy_ai -p 4242 -n team1 &
+                </div>
+                
+                <h3>🎨 Starting the GUI</h3>
+                <div class="code-block">
+./zappy_gui -p [port] -h [hostname]
+                </div>
+                
+                <div class="command-section">
+                    <div class="command-title">GUI Parameters</div>
+                    <ul class="feature-list">
+                        <li><strong>-p port:</strong> Server port number</li>
+                        <li><strong>-h machine:</strong> Server hostname (default: localhost)</li>
+                    </ul>
+                </div>
+                
+                <div class="code-block">
+# Example: Start GUI visualization
+./zappy_gui -p 4242 -h localhost
+                </div>
+                
+                <h3>🎯 Complete Game Session</h3>
+                <div class="installation-steps">
+                    <div class="step">
+                        <h4>Start the Server</h4>
+                        <div class="code-block">./zappy_server -p 4242 -x 15 -y 15 -n red blue green -c 3 -f 100</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Launch GUI (Optional but Recommended)</h4>
+                        <div class="code-block">./zappy_gui -p 4242 -h localhost</div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Connect AI Players</h4>
+                        <div class="code-block">
+# Terminal 1
+./zappy_ai -p 4242 -n red
+
+# Terminal 2  
+./zappy_ai -p 4242 -n blue
+
+# Terminal 3
+./zappy_ai -p 4242 -n green
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Watch the Game Unfold</h4>
+                        <p>Observe AI players collecting resources, forming teams, and competing for dominance through the GUI interface!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="api" class="tab-content">
+                <h2>🎮 Game Mechanics</h2>
+                
+                <h3>🗺️ World Resources</h3>
+                <div class="resource-grid">
+                    <div class="resource-item">
+                        <div class="resource-name">🍕 Food</div>
+                        <div class="resource-description">Essential for survival - players consume food over time</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">💎 Linemate</div>
+                        <div class="resource-description">Common mineral required for early level advancement</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">🔶 Deraumere</div>
+                        <div class="resource-description">Precious stone needed for mid-level incantations</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">🔷 Sibur</div>
+                        <div class="resource-description">Rare crystal for advanced elevation ceremonies</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">🟢 Mendiane</div>
+                        <div class="resource-description">Mystical gem for high-level transformations</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">🔮 Phiras</div>
+                        <div class="resource-description">Ancient artifact for master-level rituals</div>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">⭐ Thystame</div>
+                        <div class="resource-description">Legendary material for ultimate elevation</div>
+                    </div>
+                </div>
+                
+                <h3>📈 Level Progression System</h3>
+                <div class="code-block">
+Level 1 → 2: 1 player,  1 linemate
+Level 2 → 3: 2 players, 1 linemate, 1 deraumere, 1 sibur
+Level 3 → 4: 2 players, 2 linemate, 1 deraumere, 1 sibur, 2 phiras
+Level 4 → 5: 4 players, 1 linemate, 1 deraumere, 2 sibur, 1 mendiane
+Level 5 → 6: 4 players, 1 linemate, 2 deraumere, 1 sibur, 3 mendiane
+Level 6 → 7: 6 players, 1 linemate, 2 deraumere, 3 sibur, 1 phiras
+Level 7 → 8: 6 players, 2 linemate, 2 deraumere, 2 sibur, 2 mendiane, 2 phiras, 1 thystame
+                </div>
+                
+                <h3>🎯 AI Player Commands</h3>
+                <div class="api-endpoint">
+                    <div class="api-method api-get">MOVEMENT</div>
+                    <div class="api-path">Forward, Left, Right</div>
+                    <div class="api-description">Navigate the world and change orientation</div>
+                </div>
+                
+                <div class="api-endpoint">
+                    <div class="api-method api-post">INTERACTION</div>
+                    <div class="api-path">Take [resource], Set [resource]</div>
+                    <div class="api-description">Collect and drop resources on current tile</div>
+                </div>
+                
+                <div class="api-endpoint">
+                    <div class="api-method api-get">PERCEPTION</div>
+                    <div class="api-path">Look, Inventory</div>
+                    <div class="api-description">Examine surroundings and check personal inventory</div>
+                </div>
+                
+                <div class="api-endpoint">
+                    <div class="api-method api-post">COMMUNICATION</div>
+                    <div class="api-path">Broadcast [message]</div>
+                    <div class="api-description">Send messages to all players with directional information</div>
+                </div>
+                
+                <div class="api-endpoint">
+                    <div class="api-method api-put">ADVANCED</div>
+                    <div class="api-path">Incantation, Fork, Eject</div>
+                    <div class="api-description">Level up, reproduce, or expel other players</div>
+                </div>
+                
+                <h3>🤝 Team Coordination Features</h3>
+                <ul class="feature-list">
+                    <li><strong>Broadcast System:</strong> Directional messaging between team members</li>
+                    <li><strong>Resource Sharing:</strong> Strategic resource distribution</li>
+                    <li><strong>Elevation Ceremonies:</strong> Coordinated level-up rituals</li>
+                    <li><strong>Leader Election:</strong> Dynamic leadership for complex operations</li>
+                    <li><strong>Pathfinding:</strong> Intelligent navigation and obstacle avoidance</li>
+                    <li><strong>State Management:</strong> Complex AI behavior trees</li>
+                </ul>
+                
+                <h3>🏆 Victory Conditions</h3>
+                <p>The game continues until one team achieves dominance through:</p>
+                <ul class="feature-list">
+                    <li>Having 6 players reach the maximum level (Level 8)</li>
+                    <li>Controlling the majority of high-level positions</li>
+                    <li>Effective resource monopolization strategies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>Built with ❤️ for the Epitech curriculum | <a href="https://github.com">View on GitHub</a></p>
+            <p>Technologies: C, Python, C++, Raylib, Network Programming</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for any internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.component-card, .resource-item');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Island Platform
+* source:	https://sketchfab.com/3d-models/island-platform-fbc68ab01ec848a89efb026297b09c59
+* author:	jes2278617 (https://sketchfab.com/jes2278617)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Island Platform" (https://sketchfab.com/3d-models/island-platform-fbc68ab01ec848a89efb026297b09c59) by jes2278617 (https://sketchfab.com/jes2278617) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

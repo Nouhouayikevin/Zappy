@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mineral
+* source:	https://sketchfab.com/3d-models/mineral-11bf93d078d14521891b05c249ace7c4
+* author:	Xillute | Dev (https://sketchfab.com/janchristian)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mineral" (https://sketchfab.com/3d-models/mineral-11bf93d078d14521891b05c249ace7c4) by Xillute | Dev (https://sketchfab.com/janchristian) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

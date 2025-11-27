@@ -1,0 +1,13 @@
+# Instructions pour installer la bibliothèque Raylib
+
+# 1. Clonez le dépôt Raylib depuis GitHub
+git clone --depth 1 https://github.com/raysan5/raylib.git raylib
+
+# 2. Accédez au répertoire source
+cd raylib/src/
+
+# 3. Compilez la bibliothèque en version dynamique partagée
+make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED
+
+# 4. Installez la bibliothèque compilée
+sudo make install RAYLIB_LIBTYPE=SHARED

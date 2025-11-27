@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sky Giants - Environment Assets
+* source:	https://sketchfab.com/3d-models/sky-giants-environment-assets-e340ac1abacd4363ac98fe01ff6ea194
+* author:	Marcus Rain Skoog (https://sketchfab.com/mistrain)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sky Giants - Environment Assets" (https://sketchfab.com/3d-models/sky-giants-environment-assets-e340ac1abacd4363ac98fe01ff6ea194) by Marcus Rain Skoog (https://sketchfab.com/mistrain) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

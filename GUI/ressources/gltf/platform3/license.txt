@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly Island
+* source:	https://sketchfab.com/3d-models/low-poly-island-fffdf9c48c654afa8b5fd84d618e841e
+* author:	Stickman (https://sketchfab.com/Stickman_moddeler)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly Island" (https://sketchfab.com/3d-models/low-poly-island-fffdf9c48c654afa8b5fd84d618e841e) by Stickman (https://sketchfab.com/Stickman_moddeler) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,45 @@
+
+void print_map(tile_t **world_map, int X, int Y)
+{
+    int food = 0,thystane = 0,draumere= 0,sibur=0,linemate = 0,phiras =0, mendiane = 0;
+
+    for (int i = 0; world_map[i] != NULL; i++){
+        for (int j = 0; j < Y; j++){
+            printf("LINE %d COLUMN %d\nContent:\n", i, j);
+            food += world_map[i][j].resources[FOOD];
+            thystane += world_map[i][j].resources[THYSTAME];
+            draumere += world_map[i][j].resources[DERAUMERE];
+            sibur += world_map[i][j].resources[SIBUR];
+            linemate += world_map[i][j].resources[LINEMATE];
+            phiras += world_map[i][j].resources[PHIRAS];
+            mendiane += world_map[i][j].resources[MENDIANE];
+            printf("FOOD = %d\n", world_map[i][j].resources[FOOD]);
+            printf("THYSTANE = %d\n", world_map[i][j].resources[THYSTAME]);
+            printf("DERAUMERE = %d\n", world_map[i][j].resources[DERAUMERE]);
+            printf("SIBUR = %d\n", world_map[i][j].resources[SIBUR]);
+            printf("LINEMATE = %d\n", world_map[i][j].resources[LINEMATE]);
+            printf("PHIRAS = %d\n", world_map[i][j].resources[PHIRAS]);
+            printf("MENDIANE = %d\n", world_map[i][j].resources[MENDIANE]);
+        }
+    }
+    printf("Total number of :\n");
+    printf("FOOD = %d should = %.2f\n", food, round(X * Y * 0.5));
+    printf("THYSTANE = %d should = %.2f\n", thystane, round(X * Y * 0.05));
+    printf("DEARUMERE = %d should = %.2f\n", draumere, round(X * Y * 0.15));
+    printf("SIBUR = %d should = %.2f\n", sibur, round(X * Y * 0.1));
+    printf("PHIRAS = %d should = %.2f\n", phiras, round(X * Y * 0.08));
+    printf("MENDIANE = %d should = %.2f\n", mendiane, round(X * Y * 0.1));
+    printf("LINEMATE = %d should = %.2f\n", linemate, round(X * Y * 0.3));
+}
+
+
+        if (player->dir == NORTH)
+            printf("direction = NORTH\n");
+        if (player->dir == SOUTH)
+            printf("direction = SOUTH\n");
+        if (player->dir == EAST)
+            printf("direction = EAST\n");
+        if (player->dir == WEST)
+            printf("direction = WEST\n");
+        printf("player pos before move\n");
+        printf("x=%d\n, y=%d\n",player->x, player->y);

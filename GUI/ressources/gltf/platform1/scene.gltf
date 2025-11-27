@@ -1,0 +1,274 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2244,
+      "max": [
+        18.132415771484375,
+        18.594886779785156,
+        -3.0555472373962402
+      ],
+      "min": [
+        -18.343994140625,
+        -18.43559455871582,
+        -48.832298278808594
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 26928,
+      "componentType": 5126,
+      "count": 2244,
+      "max": [
+        0.9954619407653809,
+        0.9869568347930908,
+        0.996414065361023
+      ],
+      "min": [
+        -0.9954693913459778,
+        -0.9869337677955627,
+        -0.996180534362793
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 2244,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 53856,
+      "componentType": 5126,
+      "count": 1428,
+      "max": [
+        18.132415771484375,
+        18.594886779785156,
+        0.40310102701187134
+      ],
+      "min": [
+        -18.343994140625,
+        -18.43559455871582,
+        -5.454920291900635
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 70992,
+      "componentType": 5126,
+      "count": 1428,
+      "max": [
+        0.9092835783958435,
+        0.9290087223052979,
+        1.0
+      ],
+      "min": [
+        -0.9093693494796753,
+        -0.9289901256561279,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 8976,
+      "componentType": 5125,
+      "count": 1428,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "ThatJamGuy (https://sketchfab.com/EComputer)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/low-poly-island-67d748c4207d4ce581feedb6446689bd",
+      "title": "Low Poly Island"
+    },
+    "generator": "Sketchfab-12.65.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 14688,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 88128,
+      "byteOffset": 14688,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 102816,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "IslandDirt",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.438543,
+          0.214416,
+          0.12098,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.942908864227491
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "IslandGrass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0833459,
+          0.8,
+          0.0963198,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8665439436757785
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Island_IslandDirt_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Island_IslandGrass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "8e3fc92342c74b6687f4f46c3cd17598.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Island"
+    },
+    {
+      "mesh": 0,
+      "name": "Island_IslandDirt_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Island_IslandGrass_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
