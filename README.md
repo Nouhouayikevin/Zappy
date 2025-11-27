@@ -63,7 +63,7 @@ Zappy simulates a competitive survival environment where AI-controlled players (
 
 ```bash
 # 1. Clone the repository
-git clone [your-repository-url] zappy
+git clone git@github.com:Nouhouayikevin/Zappy.git zappy
 cd zappy
 
 # 2. Install Raylib (required for GUI)
